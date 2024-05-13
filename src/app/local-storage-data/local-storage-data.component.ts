@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- 
+
 @Component({
   selector: 'app-local-storage-data',
   templateUrl: './local-storage-data.component.html',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LocalStorageDataComponent implements OnInit {
   storedData: any[] = [];
- 
+
   constructor() { }
- 
+
   ngOnInit(): void {
     const storedData = localStorage.getItem('datas');
     if (storedData) {
@@ -20,13 +20,18 @@ export class LocalStorageDataComponent implements OnInit {
       }
     }
   }
+
+  editTask(task: any): void {
+    task.editing = true;
+  }
+
   deleteItem(item: any): void {
     const index = this.storedData.indexOf(item);
     if (index !== -1) {
       this.storedData.splice(index, 1);
       localStorage.setItem('datas', JSON.stringify(this.storedData));
     }
- 
+
     // Limpiar localStorage si no quedan datos
     if (this.storedData.length === 0) {
       localStorage.removeItem('datas');

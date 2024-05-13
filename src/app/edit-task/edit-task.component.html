@@ -1,1 +1,5 @@
-<p>edit-task works!</p>
+<div>
+  <label for="taskName">Nombre de la tarea:</label>
+  <input type="text" id="taskName" [(ngModel)]="editedTask.name" />
+</div>
+<button (click)="saveChanges()">Guardar cambios</button>

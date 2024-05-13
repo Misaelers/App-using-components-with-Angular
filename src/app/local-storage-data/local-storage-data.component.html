@@ -2,7 +2,8 @@
   <h2 class="heading">Stored Tasks</h2>
   <div *ngFor="let data of storedData" class="data-item">
     <p class="data-name">Name: {{ data.name }}</p>
+    <button (click)="editTask(data)" class="edit-button">Editar</button>
+    <app-edit-task [task]="data" *ngIf="data.editing"></app-edit-task>
     <app-delete-item [item]="data" (delete)="deleteItem($event)" class="delete-item"></app-delete-item>
   </div>
 </div>
-
